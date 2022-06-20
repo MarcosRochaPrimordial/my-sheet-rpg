@@ -1,0 +1,16 @@
+<div class="title-session">
+    <h1>My Sheet RPG</h1>
+</div>
+<div class="login-session">
+    <p>Choose your login</p>
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput autocomplete="off" [formControl]="emailForm">
+    </mat-form-field>
+    <!-- <button mat-raised-button color="primary" (click)="signIn()">
+        Login with <mat-icon>GoogleIcon</mat-icon>
+    </button> -->
+    <button mat-raised-button color="primary" (click)="signIn()">
+        Login
+    </button>
+</div>

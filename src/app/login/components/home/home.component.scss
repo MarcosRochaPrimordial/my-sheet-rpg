@@ -1,0 +1,18 @@
+.title-session {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 2vh;
+}
+
+.login-session {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(98vh);
+    mat-icon {
+        margin-bottom: 10px !important;
+        margin-left: 10px !important;
+    }
+}

@@ -1,0 +1,46 @@
+.container {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+
+    .card-container {
+        margin: 10px 10px 0 10px;
+        width: 100%;
+
+        mat-card {
+            margin-bottom: 10px;
+
+            mat-icon {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size: 25pt;
+                width: 25pt;
+                height: 25pt;
+            }
+        }
+
+        .player-num {
+            margin-top: 35px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        .has-no-tables {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    .button-add {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+    }
+}

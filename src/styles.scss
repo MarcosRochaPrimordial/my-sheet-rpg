@@ -13,3 +13,15 @@ body {
 input {
     outline: none;
 }
+
+.flex {
+    display: flex;
+}
+
+.flex-end {
+    justify-content: flex-end;
+}
+
+.flex-space-between {
+    justify-content: space-between;
+}

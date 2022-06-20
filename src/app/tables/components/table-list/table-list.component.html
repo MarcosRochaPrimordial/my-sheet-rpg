@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="card-container">
+        <mat-card *ngFor="let table of $tables | async">
+            <mat-card-title>{{ table.name }}</mat-card-title>
+            <mat-icon color="warn" *ngIf="userEmail === table.dmEmail" (click)="deleteTable(table.id)">cancel</mat-icon>
+            <div class="player-num">
+                <div>
+                    <img *ngIf="userEmail === table.dmEmail" src="./../../../../assets/icons/dice_hand.svg">
+                </div>
+                <div>
+                    <span *ngIf="table.sheets.length > 5">+{{ table.sheets.length - 5 }}</span>
+                    <img *ngFor="let sheet of table.sheets | slice:0:5; let i = index" [src]="icons[i]">
+                </div>
+            </div>
+        </mat-card>
+        <div class="has-no-tables" *ngIf="!hasTables">
+            <h3>There's no tables at this moment</h3>
+        </div>
+    </div>
+    <div class="button-add">
+        <button mat-fab color="primary" (click)="addTable()">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+</div>
