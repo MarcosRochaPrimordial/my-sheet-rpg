@@ -2,14 +2,12 @@
     <div class="card-container">
         <mat-card *ngFor="let table of $tables | async">
             <mat-card-title>{{ table.name }}</mat-card-title>
+            <mat-card-subtitle *ngIf="userEmail === table.dmEmail">DM</mat-card-subtitle>
             <mat-icon color="warn" *ngIf="userEmail === table.dmEmail" (click)="deleteTable(table.id)">cancel</mat-icon>
-            <div class="player-num">
+            <div class="player-num flex flex-end">
                 <div>
-                    <img *ngIf="userEmail === table.dmEmail" src="./../../../../assets/icons/dice_hand.svg">
-                </div>
-                <div>
-                    <span *ngIf="table.sheets.length > 5">+{{ table.sheets.length - 5 }}</span>
-                    <img *ngFor="let sheet of table.sheets | slice:0:5; let i = index" [src]="icons[i]">
+                    <span *ngIf="table.playerSheets.length > 5">+{{ table.playerSheets.length - 5 }}</span>
+                    <img *ngFor="let sheet of table.playerSheets | slice:0:5; let i = index" [src]="icons[i]">
                 </div>
             </div>
         </mat-card>

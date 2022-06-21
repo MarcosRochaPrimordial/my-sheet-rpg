@@ -65,7 +65,8 @@ export class TableListComponent implements OnInit {
     const table = {
       name: tableName,
       dmEmail: this.userService.user?.email,
-      sheets: [],
+      playerSheets: [],
+      masterSheets: [],
     } as Table;
     await this.tableService.createTable(table);
   }

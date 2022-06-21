@@ -3,6 +3,7 @@ import { Sheet } from "./sheet.model";
 export interface Table {
     name: string;
     dmEmail: string;
-    sheets: Sheet[];
+    playerSheets: Sheet[];
+    masterSheets: Sheet[];
     id?: string;
 }

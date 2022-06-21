@@ -28,8 +28,8 @@ export class TableService {
         map(value => value
           .filter(table =>
             (table as Table).dmEmail === this.userService.user?.email ||
-            (table as Table).sheets.some(sheet => sheet.playerEmail === this.userService.user?.email))
-        )
+            (table as Table).playerSheets.some(sheet => sheet.playerEmail === this.userService.user?.email))
+        ),
       ) as Observable<Table[]>;
   }
 
