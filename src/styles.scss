@@ -14,14 +14,67 @@ input {
     outline: none;
 }
 
+.button-add {
+    position: fixed;
+    bottom: 60px;
+    right: 30px;
+    z-index: 1;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.w70 {
+    width: 70%;
+}
+
+.w50 {
+    width: 50%;
+}
+
+.h100 {
+    height: 100%;
+}
+
+
+// flex
 .flex {
     display: flex;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-start {
+    justify-content: flex-start;
 }
 
 .flex-end {
     justify-content: flex-end;
 }
 
+.flex-center {
+    justify-content: center;
+}
+
 .flex-space-between {
     justify-content: space-between;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.flex-align-center {
+    align-items: center;
+}
+
+.flex-align-start {
+    align-items: start;
 }

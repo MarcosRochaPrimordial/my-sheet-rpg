@@ -1,0 +1,73 @@
+<mat-card [formGroup]="form">
+    <div class="flex flex-center flex-align-center warning" *ngIf="unbalancedPoints">
+        Unbalanced points ({{ totalPoints }})
+    </div>
+    <div class="flex flex-space-between flex-align-start">
+        <mat-form-field appearance="fill" class="w70">
+            <mat-label>Name</mat-label>
+            <input matInput autocomplete="off" formControlName="charName">
+        </mat-form-field>
+        <mat-icon color="warn" (click)="deleteSheet()" *ngIf="verifyIfHasPermission()">
+            {{ isDm ? 'delete' : 'logout' }}
+        </mat-icon>
+    </div>
+    <div class="flex flex-column w100">
+        <div class="flex flex-space-between w100">
+            <app-number-input class="w50" label="Pts." [formField]="points" [allowNegative]="false"></app-number-input>
+            <app-number-input class="w50" label="XP" [formField]="xp" [allowNegative]="false"></app-number-input>
+        </div>
+        <div class="flex flex-space-between w100">
+            <app-number-input label="Health" [formField]="health"  [allowNegative]="false" class="w50"></app-number-input>
+            <app-number-input label="Magic" [formField]="magic"  [allowNegative]="false" class="w50"></app-number-input>
+        </div>
+        <div class="flex flex-space-between w100">
+            <mat-form-field appearance="fill" class="flex-1">
+                <mat-label>Story</mat-label>
+                <textarea matInput autocomplete="off" formControlName="story"></textarea>
+            </mat-form-field>
+        </div>
+    </div>
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Characteristics
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-characteristics [formGroup]="characteristics"></app-characteristics>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Advantages
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-generic-list listTitle="Advantages" auxInputLabel="Pts" [formList]="advantages"></app-generic-list>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Disadvantages
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-generic-list listTitle="Disadvantages" auxInputLabel="Pts" [formList]="disadvantages">
+            </app-generic-list>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Known Magics
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-generic-list listTitle="Known Magics" auxInputLabel="Pts" [formList]="knownMagics"></app-generic-list>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Items
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-generic-list listTitle="Items" auxInputLabel="Qty" [formList]="items"></app-generic-list>
+        </mat-expansion-panel>
+    </mat-accordion>
+</mat-card>

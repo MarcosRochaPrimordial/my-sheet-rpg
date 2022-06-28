@@ -1,0 +1,18 @@
+.number-input-container {
+    height: 62px;
+    margin-bottom: 20px;
+}
+
+.container-form-field {
+    width: calc(100% - 50px);
+}
+
+.container-buttons {
+    width: 50px;
+
+    .arrow-button {
+        height: 50%;
+        border: none;
+        background-color: transparent;
+    }
+}

@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 export class LoadingService {
 
   private $loading: Subject<boolean> = new Subject<boolean>();
+  private arrLoading: boolean[] = [];
 
   public get loading() {
     return this.$loading.asObservable();
@@ -15,10 +16,16 @@ export class LoadingService {
   constructor() { }
 
   public present() {
-    this.$loading.next(true);
+    this.arrLoading.push(true);
+    this.nextLoading();
   }
-
+  
   public dismiss() {
-    this.$loading.next(false);
+    this.arrLoading.pop();
+    this.nextLoading();
+  }
+  
+  private nextLoading() {
+    this.$loading.next(this.arrLoading.length > 0);
   }
 }

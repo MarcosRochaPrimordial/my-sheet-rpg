@@ -1,8 +1,21 @@
-<mat-toolbar color="primary" class="flex flex-space-between">
-    <span>My Sheet RPG</span>
-    <button mat-icon-button *ngIf="showLoginButton" (click)="signOut()">
-        <mat-icon>power_settings_new</mat-icon>
-    </button>
+<mat-toolbar color="primary" class="flex flex-space-between" *ngIf="showNavbar">
+    <div class="flex flex-align-center">
+        <mat-icon (click)="back()" *ngIf="showBackButton">keyboard_arrow_left</mat-icon>
+        <span>My Sheet RPG</span>
+    </div>
+    <div class="flex flex-align-center">
+        <button mat-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <div style="margin-left: 20px;">
+                <button mat-icon-button (click)="signOut()">
+                    Log out
+                    <mat-icon>power_settings_new</mat-icon>
+                </button>
+            </div>
+        </mat-menu>
+    </div>
 </mat-toolbar>
 <router-outlet></router-outlet>
 <div class="loading-spinner" *ngIf="loading">

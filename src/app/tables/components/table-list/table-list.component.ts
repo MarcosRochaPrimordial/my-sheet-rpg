@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { MatBottomSheet, MatBottomSheetConfig } from '@angular/material/bottom-sheet';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
+
 import { InputBottomSheetComponent } from 'src/app/shared/components/input-bottom-sheet/input-bottom-sheet.component';
 import { QuestionDialogComponent } from 'src/app/shared/components/question-dialog/question-dialog.component';
 import { BottomSheetData } from 'src/app/shared/models/bottom-sheet-data.model';
 import { QuestionDialogData } from 'src/app/shared/models/question-dialog-data.model';
+import { Sheet } from 'src/app/shared/models/sheet.model';
+import { IconsService } from 'src/app/shared/services/icons.service';
 import { TableService } from 'src/app/shared/services/table.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Table } from './../../../shared/models/table.model';
@@ -18,14 +22,10 @@ import { Table } from './../../../shared/models/table.model';
 export class TableListComponent implements OnInit {
 
   $tables!: Observable<Table[]>;
-  hasTables: boolean = true;
-  icons: string[] = [
-    './../../../../assets/icons/player.svg',
-    './../../../../assets/icons/armour.svg',
-    './../../../../assets/icons/dragon-knight.svg',
-    './../../../../assets/icons/sourcerer.svg',
-    './../../../../assets/icons/wizard.svg'
-  ]
+  hasTables: boolean = false;
+  get icons() {
+    return this.iconsService.icons;
+  }
 
   get userEmail() {
     return this.userService.user?.email;
@@ -36,12 +36,14 @@ export class TableListComponent implements OnInit {
     private dialogService: MatDialog,
     private tableService: TableService,
     private userService: UserService,
+    private router: Router,
+    private iconsService: IconsService,
   ) { }
 
   ngOnInit(): void {
     this.$tables = this.tableService
       .getTables()
-      .pipe(tap(value => this.hasTables = !!value.length));
+      .pipe(tap(value => this.hasTables = value.length > 0));
   }
 
   addTable() {
@@ -54,9 +56,9 @@ export class TableListComponent implements OnInit {
     const bottomSheetRef = this.bottomSheet.open(InputBottomSheetComponent, config);
     bottomSheetRef
       .afterDismissed()
-      .subscribe(tableName => {
-        if (!!tableName) {
-          this.createTable(tableName)
+      .subscribe(bottomSheetOut => {
+        if (!!bottomSheetOut && !!bottomSheetOut.input) {
+          this.createTable(bottomSheetOut.input);
         }
       })
   }
@@ -89,6 +91,14 @@ export class TableListComponent implements OnInit {
           this.tableService.deleteTable(tablesId);
         }
       })
+  }
+
+  openTableDetails(id: string | undefined) {
+    this.router.navigate(['home/table', id]);
+  }
+
+  showAdditionalPlayers(playerSheets: Sheet[]) {
+    return !!playerSheets && playerSheets.length > 5;
   }
 
 }

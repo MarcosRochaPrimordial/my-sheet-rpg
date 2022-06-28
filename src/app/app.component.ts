@@ -11,7 +11,8 @@ import { UserService } from './shared/services/user.service';
 })
 export class AppComponent implements AfterViewInit, OnInit {
   loading: boolean = false;
-  showLoginButton: boolean = false;
+  showNavbar: boolean = false;
+  showBackButton: boolean = false;
 
   constructor(
     private router: Router,
@@ -23,7 +24,10 @@ export class AppComponent implements AfterViewInit, OnInit {
     this.router
       .events
       .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe(event => this.showLoginButton = (event as any)['url'] !== '/login');
+      .subscribe(event => {
+        this.showNavbar = (event as any)['url'] !== '/login';
+        this.showBackButton = (event as any)['url'].includes('table/');
+      });
   }
 
   ngAfterViewInit(): void {
@@ -34,5 +38,9 @@ export class AppComponent implements AfterViewInit, OnInit {
   signOut() {
     this.userService.signOut();
     this.router.navigate(['/login']);
+  }
+
+  back() {
+    this.router.navigate(['/home']);
   }
 }

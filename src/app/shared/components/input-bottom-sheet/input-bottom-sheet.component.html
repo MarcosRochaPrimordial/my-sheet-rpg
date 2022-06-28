@@ -1,10 +1,16 @@
 <mat-nav-list>
     <h1 *ngIf="!!data.title">{{ data.title }}</h1>
-    <mat-form-field appearance="fill">
-        <mat-label>{{ data.inputLabel }}</mat-label>
-        <input matInput [formControl]="inputForm">
-    </mat-form-field>
+    <div class="flex flex-space-between">
+        <mat-form-field appearance="fill" [style.width.%]="data.inputDisposition || 100">
+            <mat-label>{{ data.inputLabel }}</mat-label>
+            <input matInput [formControl]="inputForm">
+        </mat-form-field>
+        <div *ngIf="data.auxInputLabel" [style.width.%]="data.auxInputDisposition">
+            <app-number-input [label]="data.auxInputLabel" [formField]="auxInputForm"></app-number-input>
+        </div>
+    </div>
     <div class="flex flex-end">
-        <button (click)="confirm()" [disabled]="inputForm.invalid" mat-raised-button color="primary">Done</button>
+        <button (click)="confirm()" [disabled]="inputForm.invalid || auxInputForm.invalid" mat-raised-button
+            color="primary">Done</button>
     </div>
 </mat-nav-list>

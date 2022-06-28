@@ -1,0 +1,18 @@
+<div class="flex w100 number-input-container">
+    <div class="container-form-field">
+        <mat-form-field appearance="fill" class="w100">
+            <mat-label>{{ label }}</mat-label>
+            <input matInput autocomplete="off" [formControl]="formField" readonly>
+        </mat-form-field>
+    </div>
+    <div class="container-buttons">
+        <div class="flex flex-column flex-1 h100">
+            <button class="arrow-button" matRipple (click)="up()" *ngIf="!formField.disabled">
+                <mat-icon>keyboard_arrow_up</mat-icon>
+            </button>
+            <button class="arrow-button" matRipple (click)="down()" *ngIf="!formField.disabled">
+                <mat-icon>keyboard_arrow_down</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>

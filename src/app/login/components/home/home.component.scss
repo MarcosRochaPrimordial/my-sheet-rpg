@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     width: 100vw;
-    height: 2vh;
+    position: absolute;
 }
 
 .login-session {
@@ -10,7 +10,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: calc(98vh);
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    top: 0;
     mat-icon {
         margin-bottom: 10px !important;
         margin-left: 10px !important;

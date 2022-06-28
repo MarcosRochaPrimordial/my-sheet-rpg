@@ -1,0 +1,17 @@
+<div [formGroup]="addForm" class="flex flex-column">
+    <h1>Add a sheet</h1>
+    <mat-form-field appearance="fill" class="w100">
+        <mat-label>Player email</mat-label>
+        <input matInput autocomplete="off" formControlName="playerEmail">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="w100">
+        <mat-label>Char name</mat-label>
+        <input matInput autocomplete="off" formControlName="charName">
+    </mat-form-field>
+    <app-number-input label="Pts" [formField]="points"></app-number-input>
+    <div class="flex flex-end">
+        <button mat-flat-button color="primary" [disabled]="addForm.invalid" (click)="addSheet()">
+            Done
+        </button>
+    </div>
+</div>

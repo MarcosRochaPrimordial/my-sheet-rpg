@@ -1,0 +1,15 @@
+mat-card {
+    width: calc(100% - 2rem);
+    height: calc(100% - 2rem);
+    overflow-y: auto;
+
+    .warning {
+        background-color: #d96060;
+        height: 25px;
+        margin-bottom: 10px;
+    }
+
+    .w33 {
+        width: 33%;
+    }
+}
