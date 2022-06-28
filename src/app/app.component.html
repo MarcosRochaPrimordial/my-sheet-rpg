@@ -4,17 +4,10 @@
         <span>My Sheet RPG</span>
     </div>
     <div class="flex flex-align-center">
-        <button mat-button [matMenuTriggerFor]="menu">
-            <mat-icon>more_vert</mat-icon>
+        <button mat-button (click)="signOut()">
+            Log out
+            <mat-icon class="icon-log-out ml5">power_settings_new</mat-icon>
         </button>
-        <mat-menu #menu="matMenu">
-            <div style="margin-left: 20px;">
-                <button mat-icon-button (click)="signOut()">
-                    Log out
-                    <mat-icon>power_settings_new</mat-icon>
-                </button>
-            </div>
-        </mat-menu>
     </div>
 </mat-toolbar>
 <router-outlet></router-outlet>

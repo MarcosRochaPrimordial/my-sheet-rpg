@@ -1,7 +1,16 @@
 <div class="flex flex-column w100" [formGroup]="formGroup">
-    <app-number-input label="Strength" [formField]="strength"  [allowNegative]="false"></app-number-input>
-    <app-number-input label="Hability" [formField]="hability"  [allowNegative]="false"></app-number-input>
-    <app-number-input label="Endurance" [formField]="endurance"  [allowNegative]="false"></app-number-input>
-    <app-number-input label="Harness" [formField]="harness"  [allowNegative]="false"></app-number-input>
-    <app-number-input label="Fire Power" [formField]="firePower"  [allowNegative]="false"></app-number-input>
+    <div class="flex flex-space-around w100 mb15">
+        <app-number-input label="Strength" [formField]="strength" [allowNegative]="false" [verticalAlign]="true">
+        </app-number-input>
+        <app-number-input label="Hability" [formField]="hability" [allowNegative]="false" [verticalAlign]="true">
+        </app-number-input>
+        <app-number-input label="Endurance" [formField]="endurance" [allowNegative]="false" [verticalAlign]="true">
+        </app-number-input>
+    </div>
+    <div class="flex flex-space-around w100">
+        <app-number-input label="Harness" [formField]="harness" [allowNegative]="false" [verticalAlign]="true">
+        </app-number-input>
+        <app-number-input label="Fire Power" [formField]="firePower" [allowNegative]="false" [verticalAlign]="true">
+        </app-number-input>
+    </div>
 </div>

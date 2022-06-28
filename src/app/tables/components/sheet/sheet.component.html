@@ -7,9 +7,7 @@
             <mat-label>Name</mat-label>
             <input matInput autocomplete="off" formControlName="charName">
         </mat-form-field>
-        <mat-icon color="warn" (click)="deleteSheet()" *ngIf="verifyIfHasPermission()">
-            {{ isDm ? 'delete' : 'logout' }}
-        </mat-icon>
+        <img class="char-icon" [src]="charIcon">
     </div>
     <div class="flex flex-column w100">
         <div class="flex flex-space-between w100">
@@ -17,8 +15,9 @@
             <app-number-input class="w50" label="XP" [formField]="xp" [allowNegative]="false"></app-number-input>
         </div>
         <div class="flex flex-space-between w100">
-            <app-number-input label="Health" [formField]="health"  [allowNegative]="false" class="w50"></app-number-input>
-            <app-number-input label="Magic" [formField]="magic"  [allowNegative]="false" class="w50"></app-number-input>
+            <app-number-input label="Health" [formField]="health" [allowNegative]="false" class="w50">
+            </app-number-input>
+            <app-number-input label="Magic" [formField]="magic" [allowNegative]="false" class="w50"></app-number-input>
         </div>
         <div class="flex flex-space-between w100">
             <mat-form-field appearance="fill" class="flex-1">
@@ -70,4 +69,11 @@
             <app-generic-list listTitle="Items" auxInputLabel="Qty" [formList]="items"></app-generic-list>
         </mat-expansion-panel>
     </mat-accordion>
+
+    <button mat-flat-button color="warn" class="mt20 w100">
+        {{ isDm ? 'Delete' : 'Exit' }}
+        <mat-icon class="ml5" (click)="deleteSheet()" *ngIf="verifyIfHasPermission()">
+            {{ isDm ? 'delete' : 'logout' }}
+        </mat-icon>
+    </button>
 </mat-card>

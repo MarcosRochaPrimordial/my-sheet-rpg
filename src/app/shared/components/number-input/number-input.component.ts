@@ -11,6 +11,7 @@ export class NumberInputComponent {
   @Input() label: string = '';
   @Input() formField!: FormControl;
   @Input() allowNegative: boolean = true;
+  @Input() verticalAlign: boolean = false;
 
   constructor() { }
 
@@ -24,5 +25,4 @@ export class NumberInputComponent {
     }
     this.formField.setValue((!!this.formField.value ? this.formField.value : 0) - 1);
   }
-
 }

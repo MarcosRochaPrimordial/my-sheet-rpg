@@ -2,7 +2,7 @@
     <mat-chip-list>
         <mat-chip *ngFor="let chip of controls; let i=index">
             <span>{{ chip.get('input')?.value }} {{ chip.get('auxInput')?.value }}</span>
-            <mat-icon class="delete-button" (click)="removeChip(i); $event.stopPropagation()">close</mat-icon>
+            <mat-icon class="ml15" (click)="removeChip(i); $event.stopPropagation()">close</mat-icon>
         </mat-chip>
     </mat-chip-list>
 </div>

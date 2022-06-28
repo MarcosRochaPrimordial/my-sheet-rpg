@@ -1,18 +1,46 @@
-.number-input-container {
+.number-input-container-horizontal {
     height: 62px;
     margin-bottom: 20px;
-}
 
-.container-form-field {
-    width: calc(100% - 50px);
-}
-
-.container-buttons {
-    width: 50px;
-
-    .arrow-button {
-        height: 50%;
-        border: none;
-        background-color: transparent;
+    .container-form-field {
+        width: calc(100% - 50px);
     }
+
+    .container-buttons {
+        width: 50px;
+    
+        .arrow-button-alignment {
+            height: 50%;
+        }
+    }
+}
+
+.number-input-container-vertical {
+    width: 72px;
+
+    .container-form-field {
+        width: 100%;
+
+        mat-form-field {
+            height: 65px;
+
+            input {
+                font-size: 15pt;
+            }
+        }
+    }
+
+    .container-buttons {
+        width: 100%;
+    
+        .arrow-button-alignment {
+            width: 50%;
+        }
+    }
+}
+
+.arrow-button {
+    border: none;
+    background-color: transparent;
+    line-height: 50%;
 }

@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angu
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { debounceTime, Subject, takeUntil } from 'rxjs';
 import { Sheet } from 'src/app/shared/models/sheet.model';
+import { IconsService } from 'src/app/shared/services/icons.service';
 import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
@@ -22,6 +23,10 @@ export class SheetComponent implements OnInit, OnDestroy {
 
   get isDm() {
     return this.userService.user?.email === this.dm;
+  }
+
+  get charIcon() {
+    return this.iconsService.icons[this.form.get('charIcon')?.value];
   }
 
   get points() {
@@ -63,6 +68,7 @@ export class SheetComponent implements OnInit, OnDestroy {
   constructor(
     private userService: UserService,
     private fb: FormBuilder,
+    private iconsService: IconsService,
   ) { }
 
   ngOnInit(): void {

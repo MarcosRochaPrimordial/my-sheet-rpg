@@ -8,7 +8,7 @@
             <div class="player-num flex flex-end">
                 <div>
                     <span *ngIf="showAdditionalPlayers(table.playerSheets)">+{{ table.playerSheets.length - 5 }}</span>
-                    <img *ngFor="let sheet of table.playerSheets | slice:0:5; let i = index" [src]="icons[i]">
+                    <img *ngFor="let sheet of table.playerSheets | slice:0:5" [src]="icons[sheet.charIcon]">
                 </div>
             </div>
         </mat-card>
