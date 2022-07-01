@@ -8,6 +8,7 @@ import { SheetComponent } from './components/sheet/sheet.component';
 import { CharacteristicsComponent } from './components/characteristics/characteristics.component';
 import { GenericListComponent } from './components/generic-list/generic-list.component';
 import { BottomSheetAddComponent } from './components/bottom-sheet-add/bottom-sheet-add.component';
+import { NotesComponent } from './components/notes/notes.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { BottomSheetAddComponent } from './components/bottom-sheet-add/bottom-sh
     CharacteristicsComponent,
     GenericListComponent,
     BottomSheetAddComponent,
+    NotesComponent,
   ],
   imports: [
     CommonModule,

@@ -41,6 +41,10 @@ export class TableListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getTables();
+  }
+
+  getTables() {
     this.$tables = this.tableService
       .getTables()
       .pipe(tap(value => this.hasTables = value.length > 0));
@@ -69,8 +73,10 @@ export class TableListComponent implements OnInit {
       dmEmail: this.userService.user?.email,
       playerSheets: [],
       masterSheets: [],
+      notes: '',
     } as Table;
     await this.tableService.createTable(table);
+    this.getTables();
   }
 
   deleteTable(tablesId: string | undefined) {
@@ -82,15 +88,16 @@ export class TableListComponent implements OnInit {
         button2Label: 'Cancel',
       } as QuestionDialogData,
     };
-    
+
     const dialogRef = this.dialogService.open(QuestionDialogComponent, config);
     dialogRef
       .afterClosed()
-      .subscribe(confirm => {
+      .subscribe(async confirm => {
         if (confirm) {
-          this.tableService.deleteTable(tablesId);
+          await this.tableService.deleteTable(tablesId);
+          this.getTables();
         }
-      })
+      });
   }
 
   openTableDetails(id: string | undefined) {

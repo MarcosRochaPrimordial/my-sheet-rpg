@@ -6,4 +6,5 @@ export interface Table {
     dmEmail: string;
     playerSheets: Sheet[];
     masterSheets: Sheet[];
+    notes: string;
 }

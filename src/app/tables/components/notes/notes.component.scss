@@ -1,0 +1,13 @@
+.notes-container {
+    padding: 10px;
+
+    .notes {
+        padding: 15px;
+        font-size: 11pt;
+        resize: none;
+        width: calc(100% - 32px);
+        height: calc(100% - 131px);
+        border: 1px solid #ccc;
+        border-radius: 9px;
+    }
+}
